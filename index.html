@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowProgress</title>
+    <link rel="stylesheet" href="flowprogress.css">
+</head>
+<body>
+    <div class="progress-container" id="progressContainer" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="progress-bar" id="progressBar">
+            <span class="progress-text" id="progressText">0%</span>
+        </div>
+    </div>
+    <div id="completionMessage" class="completion-message"></div>
+    <button onclick="startFlowProgress()">Start Progress</button>
+    <button onclick="pauseFlowProgress()">Pause</button>
+    <button onclick="resumeFlowProgress()">Resume</button>
+    <script src="flowprogress.js"></script>
+</body>
+</html>

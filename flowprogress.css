@@ -1,0 +1,85 @@
+:root {
+    --progress-height: 30px;
+    --progress-radius: 15px;
+    --progress-bg: #e0e0e0;
+    --progress-bar-bg: linear-gradient(45deg, rgba(0, 45, 42, 0.8) 25%, transparent 25%, transparent 50%, rgba(0, 45, 42, 0.8) 50%, rgba(0, 45, 42, 0.8) 75%, transparent 75%, transparent), 
+                       linear-gradient(to right, rgb(0, 45, 42), rgb(5, 118, 110), rgb(54, 181, 172));
+    --progress-bar-bg-size: 20px 20px;
+    --stripe-color: rgba(255, 255, 255, 0.15);
+    --progress-bar-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --progress-text-color: white;
+    --progress-text-font-size: 14px;
+    --completion-message-color: rgb(76, 199, 192);
+    --completion-message-font-size: 16px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.progress-container {
+    width: 80%;
+    height: var(--progress-height);
+    background-color: var(--progress-bg);
+    border-radius: var(--progress-radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--progress-bar-shadow);
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--progress-bar-bg);
+    background-size: var(--progress-bar-bg-size);
+    transition: width 0.5s ease-in-out, box-shadow 0.5s;
+    border-radius: var(--progress-radius) 0 0 var(--progress-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.progress-bar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--progress-bar-stripes);
+    animation: moveStripes 1s linear infinite;
+}
+
+@keyframes moveStripes {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 20px 20px;
+    }
+}
+
+.progress-text {
+    color: var(--progress-text-color);
+    font-size: var(--progress-text-font-size);
+    font-weight: bold;
+    z-index: 1; /* 让文本显示在条纹之上 */
+}
+
+.completion-message {
+    color: var(--completion-message-color);
+    font-size: var(--completion-message-font-size);
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
